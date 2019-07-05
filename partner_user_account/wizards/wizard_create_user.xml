@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="wizard_create_user_form" model="ir.ui.view">
+        <field
+            name="name">Form for creating a partner related user account</field>
+        <field name="model">wizard.create.user</field>
+        <field name="arch" type="xml">
+            <form string="Create user for partner">
+                <group colspan="4">
+                    <field name="partner_id"/>
+                    <field
+                        name="template_user_id"
+                        context="{'active_test': False}"
+                        />
+                    <field name="login"/>
+                </group>
+                <footer>
+                    <button
+                        colspan="1"
+                        string="Cancel"
+                        special="cancel"
+                        />
+                    <button
+                        colspan="2"
+                        icon="fa-user-o"
+                        name="action_create_user"
+                        type="object"
+                        class="btn btn-primary"
+                        string="Create user account"
+                        />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
