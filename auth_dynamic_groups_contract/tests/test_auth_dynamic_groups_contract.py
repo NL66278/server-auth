@@ -72,6 +72,6 @@ class TestAuthDynamicGroups(TransactionCase):
         self.env['res.users'].update_dynamic_groups(self.demo_user.id)
         self.assertIn(self.demo_user, group.users)
         # Check contract expiration
-        self.contract_demo_user.write({'date_end', '2018-12-31'})
+        self.contract_demo_user.write({'date_end': '2018-12-31'})
         self.env['res.users'].update_dynamic_groups(self.demo_user.id)
         self.assertNotIn(self.demo_user, group.users)
