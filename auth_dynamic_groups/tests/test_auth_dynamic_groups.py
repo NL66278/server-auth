@@ -40,8 +40,9 @@ class TestAuthDynamicGroups(TransactionCase):
         groups_model = self.env['res.groups']
         group = groups_model.create({
             'name': 'Test formula is_dynamic',
-            'is_dynamic': 'formula',
+            'is_dynamic': True,
             'dynamic_group_condition': "'Demo' in user.name"})
+        self.assertTrue(group.is_dynamic)
         self.assertEqual(group.group_type, 'formula')
 
     def test_partner_category(self):
