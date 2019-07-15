@@ -14,10 +14,19 @@ class ResGroups(models.Model):
     _inherit = 'res.groups'
 
     @api.depends('group_type')
-    def _compute_dynamic(self):
+    def _compute_is_dynamic(self):
         """Is group membership maintained manually or automatically?"""
         for this in self:
             this.is_dynamic = this.group_type != 'manual'
+
+    @api.multi
+    def _inverse_is_dynamic(self):
+        """Some old code might still try to set stuff through is_dynamic."""
+        for this in self:
+            if this.is_dynamic and this.group_type == 'manual':
+                this.group_type = 'formula'
+            elif not this.dynamic and this.group_type != 'manual':
+                this.group_type = 'manual'
 
     group_type = fields.Selection(
         selection=[
@@ -30,7 +39,8 @@ class ResGroups(models.Model):
         required='True',
         help="Specify how users should selected to belong to this group")
     is_dynamic = fields.Boolean(
-        compute='_compute_dynamic',
+        compute='_compute_is_dynamic',
+        inverse='_inverse_is_dynamic',
         string='Dynamic',
         store=True, index=True)
     dynamic_group_condition = fields.Text(
