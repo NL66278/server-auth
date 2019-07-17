@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Therp BV <https://therp.nl>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
     "name": "Contract based dynamic groups",
-    "version": "10.0.1.0.0",
+    "version": "11.0.1.0.0",
     "author": "Odoo Community Association (OCA),Therp BV",
     "license": "AGPL-3",
     "complexity": "normal",
