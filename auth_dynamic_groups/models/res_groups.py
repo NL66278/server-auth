@@ -25,7 +25,7 @@ class ResGroups(models.Model):
         for this in self:
             if this.is_dynamic and this.group_type == 'manual':
                 this.group_type = 'formula'
-            elif not this.dynamic and this.group_type != 'manual':
+            elif not this.is_dynamic and this.group_type != 'manual':
                 this.group_type = 'manual'
 
     group_type = fields.Selection(
