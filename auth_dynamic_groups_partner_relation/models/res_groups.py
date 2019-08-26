@@ -33,6 +33,22 @@ class ResGroups(models.Model):
         help="Specify the relations types that, if a user is connected"
              " with another partner through such a relation, grants the"
              "  user membership of this group.")
+    allow_companies = fields.Boolean(
+        help="Normally users should be persons, and therefore only the"
+             " side of relations that apply to persons should be selectable.\n"
+             "Allowing companies as users, will make all relations"
+             " available for selection.")
+
+    @api.onchange('allow_companies')
+    def _onchange_allow_companies(self):
+        self.ensure_one()
+        relation_type_domain = [(1, '=', 1)]
+        if not self.allow_companies:
+            relation_type_domain = [
+                '|',
+                ('contact_type_this', '=', 'p'),
+                ('contact_type_this', '=', False)]
+        return {'domain': {'relation_type_ids': relation_type_domain}}
 
     @api.multi
     def should_be_in(self, user):

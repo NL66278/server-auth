@@ -13,6 +13,7 @@
                     attrs="{'invisible': [('group_type', '!=', 'relation')]}"
                     col="4"
                     >
+                    <field name="allow_companies" />
                     <label
                         for="relation_type_ids"
                         string="Select relation types that users should have a relation for"
