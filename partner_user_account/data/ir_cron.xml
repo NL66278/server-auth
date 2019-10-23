@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo noupdate="1">
+
+    <record id="cron_res_partner_user_creation" model="ir.cron">
+        <field name="name">Automatically create users for partners</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="model" eval="'res.partner'"/>
+        <field name="function" eval="'cron_res_partner_user_creation'"/>
+        <field name="args" eval="'()'"/>
+    </record>
+
+</odoo>

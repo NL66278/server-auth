@@ -5,7 +5,7 @@
 from odoo import _, api, exceptions, models
 
 
-class Resusers(models.Model):
+class ResUsers(models.Model):
     _inherit = 'res.users'
 
     @api.model

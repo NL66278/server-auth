@@ -13,6 +13,7 @@
         'base',
     ],
     "data": [
+        'data/ir_cron.xml',
         'views/res_company.xml',
         'views/res_partner.xml',
         'wizards/wizard_create_user.xml',

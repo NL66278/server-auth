@@ -6,8 +6,12 @@ from odoo import fields, models
 
 
 class ResCompany(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
     template_user_id = fields.Many2one(
-        comodel_name='res.users',
-        string='Template for users on partners')
+        comodel_name="res.users",
+        string="Template for users on partners",
+    )
+    enable_autocreate = fields.Boolean(
+        help="When set users will be automatically created if possible.",
+    )
