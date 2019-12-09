@@ -6,8 +6,8 @@
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="model" eval="'res.partner'"/>
-        <field name="function" eval="'cron_res_partner_user_creation'"/>
+        <field name="model" eval="'partner.user.management'"/>
+        <field name="function" eval="'cron_user_auto_creation'"/>
         <field name="args" eval="'()'"/>
     </record>
 
